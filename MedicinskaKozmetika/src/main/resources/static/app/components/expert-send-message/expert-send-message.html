@@ -1,0 +1,23 @@
+<div ng-controller="expertSendMessageCtrl">
+	<h1>Slanje upita nasem expertu</h1>
+	<br /> <br /> <br />
+	<div class="col-12 col-lg-8">
+			<h3>Unesite podatke:</h3>
+			<form>
+				<div class="form-group">
+					<label>Vas email</label> <input class="form-control"
+						ng-model="upitKorisnika.email" />
+				</div>
+				<div class="form-group">
+					<label>Lozinka</label> <input class="form-control"
+						ng-model="upitKorisnika.lozinka" />
+				</div>
+				<div class="form-group">
+					<label>Tekst vaseg upita</label> <input class="form-control"
+						ng-model="upitKorisnika.text" />
+				</div>
+				<button ng-click="send()" class="btn btn-primary">Posaljite</button>
+			</form>
+			<br /> <br /> <br />
+		</div>	
+</div>

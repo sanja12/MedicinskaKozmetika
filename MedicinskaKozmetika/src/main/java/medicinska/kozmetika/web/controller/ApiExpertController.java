@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import medicinska.kozmetika.model.Expert;
+import medicinska.kozmetika.model.UpitKorisnika;
 import medicinska.kozmetika.service.ExpertService;
 
 @RestController
@@ -50,7 +51,7 @@ public class ApiExpertController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-	public ResponseEntity<Expert> edit(@PathVariable Long id, @Validated @RequestBody Expert editedExpert) {
+	public ResponseEntity<Expert> add(@PathVariable Long id, @Validated @RequestBody Expert editedExpert) {
 
 		if (!id.equals(editedExpert.getId())) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -59,6 +60,20 @@ public class ApiExpertController {
 		Expert expert = expertService.save(editedExpert);
 
 		return new ResponseEntity<>(expert, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/send-message/{id}")
+	public ResponseEntity<Void> edit(@PathVariable Long id, @Validated @RequestBody UpitKorisnika upitKorisnika) {
+
+		Expert expert = expertService.findOne(upitKorisnika.getExpertId());
+
+		if (expert == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+		expertService.sendEmail(id, upitKorisnika);
+
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

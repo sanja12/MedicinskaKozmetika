@@ -4,10 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Expert {
-	
+
 	@Id
 	@GeneratedValue
 	@Column
@@ -27,6 +28,13 @@ public class Expert {
 
 	@Column
 	private String telefon;
+
+	@Column
+	private String opis;
+
+	@Lob
+	@Column(columnDefinition = "mediumblob")
+	private byte[] slika;
 
 	public Long getId() {
 		return id;
@@ -74,6 +82,22 @@ public class Expert {
 
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
+
+	public byte[] getSlika() {
+		return slika;
+	}
+
+	public void setSlika(byte[] slika) {
+		this.slika = slika;
 	}
 
 }

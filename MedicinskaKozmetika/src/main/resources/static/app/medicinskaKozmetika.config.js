@@ -14,6 +14,12 @@ medicinskaKozmetika.config(['$routeProvider', function($routeProvider) {
 		.when('/lanci-apoteka/edit/:id', {
 			templateUrl : '/app/components/edit-lanacApoteka/edit-lanacApoteka.html'
 		})
+		.when('/experti', {
+			templateUrl : '/app/components/experti/experti.html'
+		})
+		.when('/experti/send-message/:id', {
+			templateUrl : '/app/components/expert-send-message/expert-send-message.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

@@ -1,5 +1,7 @@
 package medicinska.kozmetika;
 
+import java.io.File;
+
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,7 @@ public class TestData {
 
 	@Autowired
 	private LanacApotekaService lanacApotekaService;
-	
+
 	@Autowired
 	private ExpertService expertService;
 
@@ -59,17 +61,24 @@ public class TestData {
 		apoteka.setEmail("sunce@gmail.com");
 		apoteka.setGrad("Novi Sad");
 		apoteka.setTelefon("021/2222");
+//							src="https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg"
+
 
 		apotekaService.save(apoteka);
-		
+
 		for (int i = 1; i <= 3; i++) {
 			Expert expert = new Expert();
 			expert.setEmail("sanja.pantic@hotmail.com");
-			expert.setIme("Expert0" + i);
-			expert.setPrezime("Expert0" + i);
+			expert.setIme("Ime0" + i);
+			expert.setPrezime("Prezime0" + i);
 			expert.setTelefon("011/" + i + i);
 			expert.setZvanje("mr Ph.");
+			expert.setOpis("Opis0" + i);
 			
+			File file = new File("https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg");
+	        byte[] bFile = new byte[(int) file.length()];
+			expert.setSlika(bFile);
+
 			expertService.save(expert);
 		}
 
