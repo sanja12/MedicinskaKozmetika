@@ -1,0 +1,27 @@
+<div ng-controller="editLanciApotekaCtrl">
+	<h1>Izmijenite podatke o lancu apoteka:</h1>
+	<br/>
+	
+	<div class="col-12 col-lg-3">
+		<form>
+			<div class="form-group">
+				<label for="time">Naziv</label> <input id="time"
+					class="form-control" ng-model="lanacApoteka.naziv" />
+			</div>
+
+			<div class="form-group">
+				<label>Kontakt osoba</label> <input class="form-control"
+					ng-model="lanacApoteka.kontaktOsoba" />
+			</div>
+			<div class="form-group">
+				<label>Email</label> <input class="form-control"
+					ng-model="lanacApoteka.email" />
+			</div>
+			<div class="form-group">
+				<label>Telefon</label> <input class="form-control"
+					ng-model="lanacApoteka.telefon" />
+			</div>
+			<button class="btn btn-secondary" ng-click="doEdit()">Izmijeni</button>
+		</form>
+	</div>
+</div>

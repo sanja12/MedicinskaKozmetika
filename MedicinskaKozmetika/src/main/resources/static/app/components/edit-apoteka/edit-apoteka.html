@@ -1,0 +1,42 @@
+<div ng-controller="editCtrl">
+	<h1>Izmijenite podatke o apoteci:</h1>
+	<br/>
+	
+	<div class="col-12 col-lg-3">
+		<form>
+			<div class="form-group">
+				<label for="time">Naziv</label> <input id="time"
+					class="form-control" ng-model="newApoteka.naziv" />
+			</div>
+
+			<div class="form-group">
+				<label>Adresa</label> <input class="form-control"
+					ng-model="newApoteka.adresa" />
+			</div>
+			<div class="form-group">
+				<label>Grad</label> <input class="form-control"
+					ng-model="newApoteka.grad" />
+			</div>
+			<div class="form-group">
+				<label>Telefon</label> <input class="form-control"
+					ng-model="newApoteka.telefon" />
+			</div>
+			<div class="form-group">
+				<label>Email</label> <input class="form-control"
+					ng-model="newApoteka.email" />
+			</div>
+			<div class="form-group">
+				<label>Lanac kome apoteka pripada</label> <select class="form-control"
+					ng-model="newApoteka.lanacApotekaId">
+					<option ng-repeat="la in lanciApoteka" value={{la.id}}
+						ng-selected="newApoteka.lanacApotekaId == la.id">{{la.naziv}}</option>
+				</select>
+			</div>
+			<p>
+				<button class="btn btn-secondary" ng-click="removeLanac()" ng-disabled="newApoteka.lanacApotekaId == null">
+				Apoteka ne pripada ni jednom lancu</button>
+			</p>
+			<button class="btn btn-secondary" ng-click="doEdit()">Izmijeni</button>
+		</form>
+	</div>
+</div>

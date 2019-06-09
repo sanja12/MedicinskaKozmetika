@@ -1,8 +1,9 @@
 package medicinska.kozmetika.service.impl;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import medicinska.kozmetika.model.Apoteka;
 import medicinska.kozmetika.repository.ApotekaRepository;
@@ -16,14 +17,20 @@ public class JpaApotekaServiceImpl implements ApotekaService {
 	private ApotekaRepository apotekaRepository;
 
 	@Override
-	public List<Apoteka> findAll() {
-		return apotekaRepository.findAll();
+	public Apoteka findOne(Long id) {
+		return apotekaRepository.getOne(id);
 	}
 
 	@Override
-	public Apoteka findOne(Long id) {
-		return apotekaRepository.getOne(id);
+	public Page<Apoteka> findAll(int pageNum) {
 
+		return apotekaRepository.findAll(PageRequest.of(pageNum, 5));
+	}
+
+	@Override
+	public Page<Apoteka> search(String naziv, String grad, Long lanac, int pageNum) {
+
+		return apotekaRepository.search(naziv, grad, lanac, PageRequest.of(pageNum, 5));
 	}
 
 	@Override
@@ -41,18 +48,6 @@ public class JpaApotekaServiceImpl implements ApotekaService {
 		}
 
 		return apoteka;
-	}
-
-	@Override
-	public List<Apoteka> findByLanacApotekaId(Long lanacApotekaId) {
-
-		return apotekaRepository.findByLanacApotekaId(lanacApotekaId);
-	}
-
-	@Override
-	public List<Apoteka> pretragaPoNazivuIliGradu(String naziv, String grad) {
-
-		return apotekaRepository.pretragaPoNazivuIliGradu(naziv, grad);
 	}
 
 }

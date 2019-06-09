@@ -1,0 +1,1 @@
+var medicinskaKozmetika = angular.module("medicinskaKozmetika", ['ngRoute']);

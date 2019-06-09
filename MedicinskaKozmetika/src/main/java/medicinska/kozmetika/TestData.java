@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import medicinska.kozmetika.model.Apoteka;
+import medicinska.kozmetika.model.Expert;
 import medicinska.kozmetika.model.LanacApoteka;
 import medicinska.kozmetika.service.ApotekaService;
+import medicinska.kozmetika.service.ExpertService;
 import medicinska.kozmetika.service.LanacApotekaService;
 
 @Component
@@ -17,6 +19,9 @@ public class TestData {
 
 	@Autowired
 	private LanacApotekaService lanacApotekaService;
+	
+	@Autowired
+	private ExpertService expertService;
 
 	@PostConstruct
 	public void init() {
@@ -56,6 +61,17 @@ public class TestData {
 		apoteka.setTelefon("021/2222");
 
 		apotekaService.save(apoteka);
+		
+		for (int i = 1; i <= 3; i++) {
+			Expert expert = new Expert();
+			expert.setEmail("sanja.pantic@hotmail.com");
+			expert.setIme("Expert0" + i);
+			expert.setPrezime("Expert0" + i);
+			expert.setTelefon("011/" + i + i);
+			expert.setZvanje("mr Ph.");
+			
+			expertService.save(expert);
+		}
 
 	}
 

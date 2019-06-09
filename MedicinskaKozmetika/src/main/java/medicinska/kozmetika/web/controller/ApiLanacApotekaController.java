@@ -3,6 +3,8 @@ package medicinska.kozmetika.web.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -13,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import medicinska.kozmetika.model.Apoteka;
 import medicinska.kozmetika.model.LanacApoteka;
-import medicinska.kozmetika.service.ApotekaService;
 import medicinska.kozmetika.service.LanacApotekaService;
-import medicinska.kozmetika.support.ApotekaToApotekaDTO;
 import medicinska.kozmetika.support.LanacApotekaDTOToLanacApoteka;
 import medicinska.kozmetika.support.LanacApotekaToLanacApotekaDTO;
 import medicinska.kozmetika.web.dto.ApotekaDTO;
@@ -31,29 +32,39 @@ public class ApiLanacApotekaController {
 	private LanacApotekaService lanacApotekaService;
 
 	@Autowired
-	private ApotekaService apotekaService;
-
-	@Autowired
 	private LanacApotekaToLanacApotekaDTO toDTO;
 
 	@Autowired
 	private LanacApotekaDTOToLanacApoteka toLanacApoteka;
 
-	@Autowired
-	private ApotekaToApotekaDTO toApotekaDTO;
-
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<LanacApotekaDTO>> get(@RequestParam(required = false) String naziv) {
+	public ResponseEntity<List<LanacApotekaDTO>> get(@RequestParam(required = false) String naziv,
+			@RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
 
-		List<LanacApoteka> lanciApoteka;
+		Page<LanacApoteka> lanciApoteka;
 
 		if (naziv != null) {
-			lanciApoteka = lanacApotekaService.findByNaziv(naziv);
+			naziv = '%' + naziv + '%';
+			lanciApoteka = lanacApotekaService.search(naziv, pageNum);
 		} else {
-			lanciApoteka = lanacApotekaService.findAll();
+			lanciApoteka = lanacApotekaService.findAll(pageNum);
 		}
 
-		return new ResponseEntity<>(toDTO.convert(lanciApoteka), HttpStatus.OK);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("totalPages", Integer.toString(lanciApoteka.getTotalPages()));
+
+		return new ResponseEntity<>(toDTO.convert(lanciApoteka.getContent()), headers, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	public ResponseEntity<LanacApotekaDTO> get(@PathVariable Long id) {
+		LanacApoteka lanacApoteka = lanacApotekaService.findOne(id);
+
+		if (lanacApoteka == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<>(toDTO.convert(lanacApoteka), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -88,14 +99,6 @@ public class ApiLanacApotekaController {
 		}
 
 		return new ResponseEntity<>(toDTO.convert(deleted), HttpStatus.OK);
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/{id}/apoteke")
-	public ResponseEntity<List<ApotekaDTO>> getApoteke(@PathVariable Long id) {
-
-		List<Apoteka> apoteke = apotekaService.findByLanacApotekaId(id);
-
-		return new ResponseEntity<>(toApotekaDTO.convert(apoteke), HttpStatus.OK);
 	}
 
 	@ExceptionHandler

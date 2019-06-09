@@ -3,6 +3,8 @@ package medicinska.kozmetika.web.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -34,17 +36,30 @@ public class ApiApotekaController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ApotekaDTO>> get(@RequestParam(required = false) String naziv,
-			@RequestParam(required = false) String grad) {
+			@RequestParam(required = false) String grad, @RequestParam(required = false) Long lanac,
+			@RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
 
-		List<Apoteka> apoteke;
+		Page<Apoteka> apoteke;
 
-		if (naziv != null || grad != null) {
-			apoteke = apotekaService.pretragaPoNazivuIliGradu(naziv, grad);
+		if (naziv != null || grad != null || lanac != null) {
+			
+			if (naziv != null) {
+				naziv = "%" + naziv + "%";
+			}
+
+			if (grad != null) {
+				grad = "%" + grad + "%";
+			}
+
+			apoteke = apotekaService.search(naziv, grad, lanac, pageNum);
 		} else {
-			apoteke = apotekaService.findAll();
+			apoteke = apotekaService.findAll(pageNum);
 		}
 
-		return new ResponseEntity<>(toDTO.convert(apoteke), HttpStatus.OK);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("totalPages", Integer.toString(apoteke.getTotalPages()));
+
+		return new ResponseEntity<>(toDTO.convert(apoteke.getContent()), headers, HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")

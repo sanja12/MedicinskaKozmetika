@@ -1,8 +1,9 @@
 package medicinska.kozmetika.service.impl;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import medicinska.kozmetika.model.LanacApoteka;
 import medicinska.kozmetika.repository.LanacApotekaRepository;
@@ -16,14 +17,15 @@ public class JpaLanacApotekaServiceImpl implements LanacApotekaService {
 	private LanacApotekaRepository lanacApotekaRepository;
 
 	@Override
-	public List<LanacApoteka> findAll() {
-		return lanacApotekaRepository.findAll();
-	}
-
-	@Override
 	public LanacApoteka findOne(Long id) {
 		return lanacApotekaRepository.getOne(id);
 
+	}
+
+	@Override
+	public Page<LanacApoteka> findAll(int pageNum) {
+
+		return lanacApotekaRepository.findAll(PageRequest.of(pageNum, 5));
 	}
 
 	@Override
@@ -44,9 +46,8 @@ public class JpaLanacApotekaServiceImpl implements LanacApotekaService {
 	}
 
 	@Override
-	public List<LanacApoteka> findByNaziv(String naziv) {
-
-		return lanacApotekaRepository.findByNaziv(naziv);
+	public Page<LanacApoteka> search(String naziv, int pageNum) {
+		return lanacApotekaRepository.search(naziv, PageRequest.of(pageNum, 5));
 	}
 
 }
