@@ -1,6 +1,8 @@
 package medicinska.kozmetika;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,14 @@ import org.springframework.stereotype.Component;
 import medicinska.kozmetika.model.Apoteka;
 import medicinska.kozmetika.model.Expert;
 import medicinska.kozmetika.model.LanacApoteka;
+import medicinska.kozmetika.model.LinijaKozmetike;
+import medicinska.kozmetika.model.Promocija;
+import medicinska.kozmetika.model.TipPromocije;
 import medicinska.kozmetika.service.ApotekaService;
 import medicinska.kozmetika.service.ExpertService;
 import medicinska.kozmetika.service.LanacApotekaService;
+import medicinska.kozmetika.service.LinijaKozmetikeService;
+import medicinska.kozmetika.service.PromocijaService;
 
 @Component
 public class TestData {
@@ -24,6 +31,12 @@ public class TestData {
 
 	@Autowired
 	private ExpertService expertService;
+
+	@Autowired
+	private PromocijaService promocijaService;
+
+	@Autowired
+	private LinijaKozmetikeService linijaKozmetikeService;
 
 	@PostConstruct
 	public void init() {
@@ -50,7 +63,16 @@ public class TestData {
 			// Ovo nece trebati poslije
 			lanacApoteka.getApoteke().add(apoteka);
 
+			Promocija promocija = new Promocija();
+			promocija.setApoteka(apoteka);
+			promocija.setDatum(LocalDate.now());
+			promocija.setDodatniOpisPromocije("Opis");
+			promocija.setTipPromocije(TipPromocije.POPUST);
+			promocija.setVrijeme(LocalTime.now());
+
 			apotekaService.save(apoteka);
+
+			promocijaService.save(promocija);
 
 		}
 
@@ -61,8 +83,6 @@ public class TestData {
 		apoteka.setEmail("sunce@gmail.com");
 		apoteka.setGrad("Novi Sad");
 		apoteka.setTelefon("021/2222");
-//							src="https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg"
-
 
 		apotekaService.save(apoteka);
 
@@ -74,12 +94,23 @@ public class TestData {
 			expert.setTelefon("011/" + i + i);
 			expert.setZvanje("mr Ph.");
 			expert.setOpis("Opis0" + i);
-			
+
 			File file = new File("https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg");
-	        byte[] bFile = new byte[(int) file.length()];
+			byte[] bFile = new byte[(int) file.length()];
 			expert.setSlika(bFile);
 
 			expertService.save(expert);
+		}
+
+		for (int i = 0; i < 3; i++) {
+			LinijaKozmetike linijaKozmetike = new LinijaKozmetike();
+
+			linijaKozmetike.setDatumLansiranja(LocalDate.now());
+			linijaKozmetike.setNaziv("Linija0" + i);
+			linijaKozmetike.setOpis("Opis linije broj 0" + i);
+
+			linijaKozmetikeService.save(linijaKozmetike);
+
 		}
 
 	}

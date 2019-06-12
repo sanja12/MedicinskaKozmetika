@@ -12,4 +12,7 @@ public interface LinijaKozmetikeService {
 	LinijaKozmetike save(LinijaKozmetike linijaKozmetike);
 
 	LinijaKozmetike delete(Long id);
+
+	List<LinijaKozmetike> findByNaziv(String naziv);
+
 }

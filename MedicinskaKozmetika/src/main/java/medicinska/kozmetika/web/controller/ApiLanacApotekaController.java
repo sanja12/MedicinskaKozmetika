@@ -15,13 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import medicinska.kozmetika.model.Apoteka;
 import medicinska.kozmetika.model.LanacApoteka;
 import medicinska.kozmetika.service.LanacApotekaService;
 import medicinska.kozmetika.support.LanacApotekaDTOToLanacApoteka;
 import medicinska.kozmetika.support.LanacApotekaToLanacApotekaDTO;
-import medicinska.kozmetika.web.dto.ApotekaDTO;
 import medicinska.kozmetika.web.dto.LanacApotekaDTO;
 
 @RestController

@@ -1,0 +1,25 @@
+<div ng-controller="linijeKozmetikeCtrl">
+	<h1>Spisak linija nase kozmetike:</h1>
+	<br> <br>
+	<div class="row">
+		<div class="col-md-4" ng-repeat="lk in linijeKozmetike">
+			<div class="card-group">
+
+				<div class="view overlay">
+					<img class="card-img-top"
+						src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg"
+						alt="Card image cap"> <a href="#!">
+						<div class="mask rgba-white-slight"></div>
+					</a>
+				</div>
+
+				<div class="card-body">
+
+					<h4 class="card-title">{{lk.naziv}}</h4>
+					<p class="card-text">{{lk.opis}}</p>
+					<button type="button" class="btn btn-primary btn-md">Prikazi
+						proizvode</button>
+				</div>
+			</div>
+		</div>
+	</div>

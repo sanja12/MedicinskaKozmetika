@@ -1,35 +1,21 @@
-package medicinska.kozmetika.model;
+package medicinska.kozmetika.web.dto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import medicinska.kozmetika.model.TipPromocije;
 
-@Entity
-public class Promocija {
+public class PromocijaDTO {
 
-	@Id
-	@GeneratedValue
-	@Column
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Apoteka apoteka;
+	private ApotekaDTO apotekaDTO;
 
-	@Column
 	private LocalDate datum;
 
-	@Column
 	private LocalTime vrijeme;
 
-	@Column
 	private TipPromocije tipPromocije;
 
-	@Column
 	private String dodatniOpisPromocije;
 
 	public Long getId() {
@@ -40,12 +26,12 @@ public class Promocija {
 		this.id = id;
 	}
 
-	public Apoteka getApoteka() {
-		return apoteka;
+	public ApotekaDTO getApotekaDTO() {
+		return apotekaDTO;
 	}
 
-	public void setApoteka(Apoteka apoteka) {
-		this.apoteka = apoteka;
+	public void setApotekaDTO(ApotekaDTO apotekaDTO) {
+		this.apotekaDTO = apotekaDTO;
 	}
 
 	public LocalDate getDatum() {

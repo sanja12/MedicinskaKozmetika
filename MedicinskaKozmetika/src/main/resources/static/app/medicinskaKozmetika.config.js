@@ -20,6 +20,12 @@ medicinskaKozmetika.config(['$routeProvider', function($routeProvider) {
 		.when('/experti/send-message/:id', {
 			templateUrl : '/app/components/expert-send-message/expert-send-message.html'
 		})
+		.when('/promocije', {
+			templateUrl : '/app/components/promocije/promocije.html'
+		})
+		.when('/linije-kozmetike', {
+			templateUrl : '/app/components/linije-kozmetike/linije-kozmetike.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

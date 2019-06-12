@@ -1,0 +1,21 @@
+<div ng-controller="promocijeCtrl">
+	<h1>Spisak promocija nase kozmetike:</h1>
+	<br> <br>
+	<div class="row">
+		<div class="col-sm-6" ng-repeat="p in promocije">
+			<div class="card border-primary mb-4">
+				<div class="card-body text-primary">
+					<h5 class="card-title">
+						{{p.apotekaDTO.naziv}} <br /> {{p.apotekaDTO.adresa}},
+						{{p.apotekaDTO.grad}}
+					</h5>
+					<p class="card-text">{{p.vrijeme}} {{p.datum}}</p>
+					<p class="card-text">
+						Tip promocije: {{p.tipPromocije}} <br /> Ovdje dodajemo poseban
+						opis promocije: {{p.dodatniOpisPromocije}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
