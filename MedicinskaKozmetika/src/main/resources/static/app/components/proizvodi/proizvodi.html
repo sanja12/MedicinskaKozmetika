@@ -1,0 +1,29 @@
+<div ng-controller="proizvodiCtrl">
+	<h1>Proizvodi iz linije {{naziv}}</h1>
+	<br> <br>
+	<div class="row">
+
+		<div class="card border-primary mb-3" ng-repeat="p in proizvodi">
+			<div class="card-group">
+				<div class="card-header">{{p.naziv}}</div>
+				<div class="card-body text-primary">
+					<h5 class="card-title">{{p.tipProizvoda}} {{p.kolicina}}</h5>
+					<p class="card-text">{{p.opis}}</p>
+					<p class="card-text">Tipovi koze kojima proizvod odgovara:
+						{{p.tipoviKoze}}</p>
+					<p class="card-text">Problemi koze kod kojih se proizvod
+						primjenjuje: {{p.problemiKoze}}</p>
+					<p class="card-text">Mjesta primjene: {{p.mjestaPrimjene}}</p>
+				</div>
+				<div>
+					<button type="button" class="btn btn-info btn-xs"
+						ng-click="goToEdit(p.id)">Izmjeni</button>
+				</div>
+				<div>
+					<button type="button" class="btn btn-info btn-xs"
+						ng-click="delete(p.id)">Obrisi</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

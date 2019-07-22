@@ -26,6 +26,9 @@ medicinskaKozmetika.config(['$routeProvider', function($routeProvider) {
 		.when('/linije-kozmetike', {
 			templateUrl : '/app/components/linije-kozmetike/linije-kozmetike.html'
 		})
+		.when('/linije-kozmetike/:id/proizvodi', {
+			templateUrl : '/app/components/proizvodi/proizvodi.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

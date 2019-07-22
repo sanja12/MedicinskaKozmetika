@@ -12,12 +12,15 @@ import medicinska.kozmetika.model.Apoteka;
 import medicinska.kozmetika.model.Expert;
 import medicinska.kozmetika.model.LanacApoteka;
 import medicinska.kozmetika.model.LinijaKozmetike;
+import medicinska.kozmetika.model.MjestoPrimjene;
+import medicinska.kozmetika.model.Proizvod;
 import medicinska.kozmetika.model.Promocija;
 import medicinska.kozmetika.model.TipPromocije;
 import medicinska.kozmetika.service.ApotekaService;
 import medicinska.kozmetika.service.ExpertService;
 import medicinska.kozmetika.service.LanacApotekaService;
 import medicinska.kozmetika.service.LinijaKozmetikeService;
+import medicinska.kozmetika.service.ProizvodService;
 import medicinska.kozmetika.service.PromocijaService;
 
 @Component
@@ -37,6 +40,9 @@ public class TestData {
 
 	@Autowired
 	private LinijaKozmetikeService linijaKozmetikeService;
+
+	@Autowired
+	private ProizvodService proizvodService;
 
 	@PostConstruct
 	public void init() {
@@ -110,6 +116,19 @@ public class TestData {
 			linijaKozmetike.setOpis("Opis linije broj 0" + i);
 
 			linijaKozmetikeService.save(linijaKozmetike);
+
+			for (int j = 0; j < 3; j++) {
+
+				Proizvod proizvod = new Proizvod();
+
+				proizvod.setKolicina("125g");
+				proizvod.setLinijaKozmetike(linijaKozmetike);
+				proizvod.getMjestaPrimjene().add(MjestoPrimjene.KOSA);
+				proizvod.setNaziv("Sampon0" + j);
+
+				proizvodService.save(proizvod);
+
+			}
 
 		}
 

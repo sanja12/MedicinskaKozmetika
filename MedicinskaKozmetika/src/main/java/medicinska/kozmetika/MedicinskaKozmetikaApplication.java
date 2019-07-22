@@ -8,10 +8,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class MedicinskaKozmetikaApplication extends SpringBootServletInitializer {
 
-	@SuppressWarnings("unused")
-	@Autowired
-	private TestData testData;
-
 	public static void main(String[] args) {
 		SpringApplication.run(MedicinskaKozmetikaApplication.class, args);
 	}

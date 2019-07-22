@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public abstract class Proizvod {
+public class Proizvod {
 
 	@Id
 	@GeneratedValue
@@ -28,11 +28,14 @@ public abstract class Proizvod {
 	@Column
 	private String kolicina;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	private LinijaKozmetike linijaKozmetike;
-
 	@Column
 	private String opis;
+
+	@Column
+	private String sastav;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private LinijaKozmetike linijaKozmetike;
 
 	@Enumerated(EnumType.STRING)
 	private TipProizvoda tipProizvoda;
@@ -85,20 +88,28 @@ public abstract class Proizvod {
 		this.kolicina = kolicina;
 	}
 
-	public LinijaKozmetike getLinijaKozmetike() {
-		return linijaKozmetike;
-	}
-
-	public void setLinijaKozmetike(LinijaKozmetike linijaKozmetike) {
-		this.linijaKozmetike = linijaKozmetike;
-	}
-
 	public String getOpis() {
 		return opis;
 	}
 
 	public void setOpis(String opis) {
 		this.opis = opis;
+	}
+
+	public String getSastav() {
+		return sastav;
+	}
+
+	public void setSastav(String sastav) {
+		this.sastav = sastav;
+	}
+
+	public LinijaKozmetike getLinijaKozmetike() {
+		return linijaKozmetike;
+	}
+
+	public void setLinijaKozmetike(LinijaKozmetike linijaKozmetike) {
+		this.linijaKozmetike = linijaKozmetike;
 	}
 
 	public TipProizvoda getTipProizvoda() {

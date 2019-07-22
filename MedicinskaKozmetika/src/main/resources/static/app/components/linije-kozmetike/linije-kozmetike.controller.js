@@ -9,9 +9,15 @@ medicinskaKozmetika.controller("linijeKozmetikeCtrl", function($scope, $http, $l
 	$scope.linijaKozmetike.datumLansiranja = "";
 	$scope.linijaKozmetike.opis = "";
 	
+	$scope.newLinijaKozmetike = {};
+	$scope.newLinijaKozmetike.id = "";
+	$scope.newLinijaKozmetike.naziv = "";
+	$scope.newLinijaKozmetike.datumLansiranja = "";
+	$scope.newLinijaKozmetike.opis = "";
+	
 	var linijeKozmetikeUrl = "/api/linije-kozmetike";
 	
-	var getlinijeKozmetike = function() {
+	var getLinijeKozmetike = function() {
 		$http.get(linijeKozmetikeUrl).then(function success(res) {
 			$scope.linijeKozmetike = res.data;
 
@@ -20,103 +26,79 @@ medicinskaKozmetika.controller("linijeKozmetikeCtrl", function($scope, $http, $l
 		});
 	}
 
-	getlinijeKozmetike();
+	getLinijeKozmetike();
 
-
-	$scope.doSearch = function() {
-		$scope.pageNum = 0;
-		getApoteke();
-	}
-
-	
-	
-	$scope.goToEdit = function(id) {
-		$location.path("apoteke/edit/" + id);
+	$scope.goToProizvodi = function(id) {
+		$location.path("linije-kozmetike/" + id + "/proizvodi");
 	}
 	
-	$scope.delete = function(id) {
-
-		$http.delete("/api/apoteke/" + id).then(function success() {
-			getApoteke();
-			
-		}, function error() {
-			alert("Could not delete a apoteka!");
-		});
-	}
+	$scope.visible = false;
 	
-	$scope.deleteLanacApoteka = function(id) {
-
-		$http.delete("/api/lanci-apoteka/" + id).then(function success() {
-			getLanciApoteka();
-			
-		}, function error() {
-			alert("Could not delete a lanac apoteka!");
-		});
-	}	
-	
-	$scope.goToEditLanacApoteka = function(id) {
-		$location.path("lanci-apoteka/edit/" + id);
-	}
-	
-	$scope.listApoteke = function(id) {
-		$scope.searchParams.lanac = id;
-		getApoteke();
-
+	$scope.show = function() {
+		if($scope.visible) {
+			$scope.visible = false;
+			return;
+		}
+		
+		$scope.visible = true;
 	}
 	
 	$scope.doAdd = function() {
-		$http.post(("/api/knjige"), $scope.newKnjiga).then(function success() {
-			getKnjige();
+		$http.post(("/api/linije-kozmetike"), $scope.newLinijaKozmetike).then(function success() {
+			getLinijeKozmetike();
 			
-			$scope.newKnjiga = {};
-			$scope.newKnjiga.id = "";
-			$scope.newKnjiga.naziv = "";
-			$scope.newKnjiga.glasovi = "0";
-			$scope.newKnjiga.pisac = "";
-			$scope.newKnjiga.izdavacId = "";
-			$scope.newKnjiga.izdavacNaziv = "";
-			$scope.newKnjiga.izdanje = "";
-			$scope.newKnjiga.isbn = "";
+			$scope.newLinijaKozmetike = {};
+			$scope.newLinijaKozmetike.id = "";
+			$scope.newLinijaKozmetike.naziv = "";
+			$scope.newLinijaKozmetike.datumLansiranja = "";
+			$scope.newLinijaKozmetike.opis = "";
+			
+			$scope.visible = false;
 			
 		}, function error() {
 			alert("Something went wrong.");
 		});
 	}
-
-	$scope.glasaj = function(id) {
-		var url = "/api/knjige/" + id + "/glasaj";
-
-		$http.post(url).then(function success() {
-			getKnjige();
-			alert("Uspjesno ste glasali! :)")
-		}, function error() {
-			alert("Neuspjesno glasanje!")
-		});
-	}
 	
-	var getNajvise = function() {
-		var url = "/api/knjige/najvise";
+	$scope.delete = function(id) {
 
-		$http.get(url).then(function success(res) {
-			$scope.knjiga = res.data;
+		$http.delete("/api/linije-kozmetike/" + id).then(function success() {
+			getLinijeKozmetike();
 			
 		}, function error() {
-			alert("Neuspjesno ucitavanje knjige sa najvecim brojem glasova!")
+			alert("Could not delete a linija kozmetike!");
 		});
 	}
 	
-	$scope.edit = function(id) {
-		var url = "/api/knjige/" + id;
-
-		$http.get(url).then(function success(res) {
-			$scope.newKnjiga = res.data;
-			getKnjige();
+	$scope.visible2 = false;
+	
+	$scope.goToEdit = function(id) {
+		$http.get("/api/linije-kozmetike/" + id).then(function success(res) {
+			$scope.linijaKozmetike = res.data;
 
 		}, function error() {
-			alert("Neuspjesno!")
+			alert("Could not get a linija kozmetike!")
 		});
+		
+		if($scope.visible2) {
+			$scope.visible2 = false;
+			return;
+		}
+		
+		$scope.visible2 = true;
 	}
 	
 
+	$scope.doEdit = function(id) {
+		var url = "/api/linije-kozmetike/" + id;
+
+		$http.put(url, $scope.linijaKozmetike).then(function success(res) {
+			$scope.visible2 = false;
+			getLinijeKozmetike();
+
+		}, function error() {
+			alert("Could not edit a linija kozmetike!")
+		});
+	}
 	
 });
