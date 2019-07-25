@@ -1,21 +1,68 @@
+<meta charset="utf-8">
+<hr>
 <div ng-controller="promocijeCtrl">
-	<h1>Spisak promocija nase kozmetike:</h1>
-	<br> <br>
-	<div class="row">
-		<div class="col-sm-6" ng-repeat="p in promocije">
-			<div class="card border-primary mb-4">
-				<div class="card-body text-primary">
-					<h5 class="card-title">
-						{{p.apotekaDTO.naziv}} <br /> {{p.apotekaDTO.adresa}},
-						{{p.apotekaDTO.grad}}
-					</h5>
-					<p class="card-text">{{p.vrijeme}} {{p.datum}}</p>
-					<p class="card-text">
-						Tip promocije: {{p.tipPromocije}} <br /> Ovdje dodajemo poseban
-						opis promocije: {{p.dodatniOpisPromocije}}
-					</p>
+	<section id="about-us">
+		<div class="container">
+			<div class="team">
+				<div class="text-center wow fadeInDown">
+					<h2>Promocije naših proizvoda</h2>
+					<p>Tip promocije je popust ili poklon proizvod</p>
 				</div>
+				<div class="row clearfix">
+					<div class="col-md-4 col-sm-6" ng-repeat="p in promocije">
+						<p>
+						<div class="single-profile-top wow fadeInDown"
+							data-wow-duration="1000ms" data-wow-delay="300ms">
+							<div class="media">
+								<div class="pull-left">
+									<a href="#"><img class="media-object"
+										ng-if="p.tipPromocije == 'POPUST'"
+										src="/assets/img/popust.jpg" alt=""></a> <a href="#"><img
+										class="media-object" ng-if="p.tipPromocije == 'POKLON'"
+										src="/assets/img/poklon.jpg" alt=""></a>
+								</div>
+								<div class="media-body">
+									<h4>
+										{{p.apotekaDTO.naziv}} <br /> {{p.apotekaDTO.adresa}},
+										{{p.apotekaDTO.grad}}
+									</h4>
+									<h5>{{p.datum | date : "dd.MM.yyyy."}} godine u
+										{{p.vrijeme | date: "shortDate"}}</h5>
+									<ul class="tag clearfix">
+										<li class="btn"><a href="#">Tip promocije:
+												{{p.tipPromocije}}</a></li>
+									</ul>
+
+									<ul class="social_icons">
+										<li><h5>Dijeli:</h5></li>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<!--/.media -->
+							<p>Ovdje ide opis promocije: {{p.dodatniOpisPromocije}}</p>
+						</div>
+					</div>
+				</div>
+
+				<br />
+
+				<div class="text-center wow fadeInDown">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link"
+								 href="changePage(-1)" ng-disabled="pageNum == 0">Prethodna</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link"
+								href="#">Sljedeća</a></li>
+						</ul>
+					</nav>
+				</div>
+
 			</div>
-		</div>
-	</div>
+	</section>
 </div>

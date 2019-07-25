@@ -1,84 +1,172 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="/assets/js/angular.js"></script>
 <script src="/assets/js/angular-route.js"></script>
-
 <script src="/app/medicinskaKozmetika.module.js"></script>
 <script src="/app/medicinskaKozmetika.config.js"></script>
 <script src="/app/components/home/home.controller.js"></script>
-
+<script src="/app/components/kontakt/kontakt.controller.js"></script>
 <script src="/app/components/apoteke/apoteke.controller.js"></script>
 <script src="/app/components/edit-apoteka/edit-apoteka.controller.js"></script>
 <script src="/app/components/edit-lanacApoteka/edit-lanacApoteka.controller.js"></script>
+<script src="/app/components/promocije/promocije.controller.js"></script>
 <script src="/app/components/experti/experti.controller.js"></script>
 <script src="/app/components/expert-send-message/expert-send-message.controller.js"></script>
-<script src="/app/components/promocije/promocije.controller.js"></script>
 <script src="/app/components/linije-kozmetike/linije-kozmetike.controller.js"></script>
 <script src="/app/components/proizvodi/proizvodi.controller.js"></script>
 
+<title>Medicinska kozmetika</title>
 
-
-<link rel="stylesheet" href="/assets/css/bootstrap.css">
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-
-<link rel="stylesheet" href="/app/css/style.css">
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/css/animate.css">
+<link href="/assets/css/animate.min.css" rel="stylesheet">
+<link href="app/components/css/style.css" rel="stylesheet" />
 
 </head>
+
 <body>
-	<div class="container">
+	<header id="header">
+		<nav class="navbar navbar-default navbar-static-top" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="index.html"><h1>Medicinska kozmetika</h1></a>
+					</div>
+					<div>Mi brinemo o vašoj koži</div>
+					<br />
+				</div>
 
-		<nav class="navbar navbar-expand fixed-top navbar-dark bg-danger">
-			<a class="navbar-brand" href="/#!/">Medicinska kozmetika</a>
-
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/#!/apoteke">Prodajna mjesta</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/#!/promocije">Promocije</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/#!/experti">Pitajte eksperta</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/#!/linije-kozmetike">Linije kozmetike</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/#!/proizvodi">Nasi proizvodi</a>
-				</li>
-			</ul>
+				<div class="navbar-collapse collapse">
+					<div class="menu">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation"><a href="index.html" class="active">Početna</a></li>
+							<li role="presentation"><a href="/#!/brend">Naš brend</a></li>
+							<li role="presentation"><a href="/#!/apoteke">Prodajna
+									mjesta</a></li>
+							<li role="presentation"><a href="/#!/promocije">Promocije</a></li>
+							<li role="presentation"><a href="/#!/experti">Pitajte
+									eksperta</a></li>
+							<li role="presentation"><a href="/#!/linije-kozmetike">Linije
+									kozmetike</a></li>
+							<li role="presentation"><a href="/#!/proizvodi">Proizvodi</a></li>
+							<li role="presentation"><a href="/#!/kontakt">Kontakt</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</nav>
+	</header>
+	
+	<div ng-app="medicinskaKozmetika">
+		<div ng-view></div>
+	</div>
 
-		<br> <br> <br>
+	<footer>
+		<div class="container">
+			<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms"
+				data-wow-delay="300ms">
+				<h4>O nama</h4>
+				<p>Ukoliko imate bilo kakvih pitanja, predloga i sugestija,
+					budite slobodni da nas kontaktirajte:</p>
+				<div class="contact-info">
+					<ul>
+						<li><i class="fa fa-home fa"></i>Zmaj Jovina 12, Novi Sad, Srbija</li>
+						<li><i class="fa fa-phone fa"></i> +381 60 1299002</li>
+						<li><i class="fa fa-envelope fa"></i>
+							medicinskakozmetika@gmail.com</li>
+					</ul>
+				</div>
+			</div>
 
-		<div ng-app="medicinskaKozmetika">
+			<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms"
+				data-wow-delay="600ms">
+				<div class="text-center">
+					<h4>Naši eksperti</h4>
+					<ul class="sidebar-gallery">
+						<li><a href="#"><img src="/assets/img/111.jpg" height="42" width="82"
+								alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/112.jpg"
+								alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/113.jpg"
+								alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/114.jpg"
+								alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/115.jpg"
+								alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/116.jpg"
+								alt="" /></a></li>
+					</ul>
+				</div>
+			</div>
 
-
-
-			<div ng-view></div>
-
+			<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms"
+				data-wow-delay="900ms">
+				<div class="">
+					<h4>Pretplatite se na naš bilten</h4>
+					<p>Prijavite se danas kako biste dobijali najnovije vijesti
+						mejlom. Možete se odjaviti sa ovog servisa bilo kada</p>
+					<div class="btn-gamp">
+						<input type="email" class="form-control" id="exampleInputEmail3"
+							placeholder="Unesite email">
+					</div>
+					<div class="btn-gamp">
+						<a type="submit" class="btn btn-default">Prijavi se</a>
+					</div>
+				</div>
+			</div>
 
 		</div>
+	</footer>
 
+	<div class="sub-footer">
+		<div class="container">
+			<div class="social-icon">
+				<div class="col-md-4">
+					<ul class="social-network">
+						<li><a href="#" class="fb tool-tip" title="Facebook"><i
+								class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="twitter tool-tip" title="Twitter"><i
+								class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="gplus tool-tip" title="Google Plus"><i
+								class="fa fa-google-plus"></i></a></li>
+						<li><a href="#" class="linkedin tool-tip" title="Linkedin"><i
+								class="fa fa-linkedin"></i></a></li>
+						<li><a href="#" class="ytube tool-tip" title="You Tube"><i
+								class="fa fa-youtube-play"></i></a></li>
+					</ul>
+				</div>
+			</div>
 
+			<div class="col-md-4 col-md-offset-4">
+				<div class="copyright">
+					&copy; Medicinska kozmetika. All Rights Reserved.
+					<div class="credits">
+						Designed by <a href="#">Sanja Pantić</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<script src="/assets/js/bootstrap.js"></script>
+
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery-migrate.min.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/wow.min.js"></script>
+	<script>
+		wow = new WOW({}).init();
+	</script>
 </body>
+
 </html>

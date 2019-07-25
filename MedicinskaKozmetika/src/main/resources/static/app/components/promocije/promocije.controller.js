@@ -50,15 +50,9 @@ medicinskaKozmetika.controller("promocijeCtrl", function($scope, $http, $locatio
 	    
 	    getPromocije();
 
-	$scope.doSearch = function() {
-		$scope.pageNum = 0;
-		getApoteke();
-	}
-
 	$scope.changePage = function(direction) {
 		$scope.pageNum = $scope.pageNum + direction;
-		getApoteke();
-
+		getPromocije();
 	}
 	
 	$scope.goToEdit = function(id) {

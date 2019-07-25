@@ -13,8 +13,10 @@ import medicinska.kozmetika.model.Expert;
 import medicinska.kozmetika.model.LanacApoteka;
 import medicinska.kozmetika.model.LinijaKozmetike;
 import medicinska.kozmetika.model.MjestoPrimjene;
+import medicinska.kozmetika.model.ProblemKoze;
 import medicinska.kozmetika.model.Proizvod;
 import medicinska.kozmetika.model.Promocija;
+import medicinska.kozmetika.model.TipKoze;
 import medicinska.kozmetika.model.TipPromocije;
 import medicinska.kozmetika.service.ApotekaService;
 import medicinska.kozmetika.service.ExpertService;
@@ -121,10 +123,17 @@ public class TestData {
 
 				Proizvod proizvod = new Proizvod();
 
-				proizvod.setKolicina("125g");
+				proizvod.setKolicina(100 + 10 * j + "g");
 				proizvod.setLinijaKozmetike(linijaKozmetike);
 				proizvod.getMjestaPrimjene().add(MjestoPrimjene.KOSA);
-				proizvod.setNaziv("Sampon0" + j);
+				proizvod.getMjestaPrimjene().add(MjestoPrimjene.TIJELO);
+				proizvod.setNaziv("Proizvod0" + j);
+				proizvod.setOpis("Opis proizvoda");
+				proizvod.getProblemiKoze().add(ProblemKoze.ATOPIJA);
+				proizvod.getProblemiKoze().add(ProblemKoze.ROZACEA);
+				proizvod.getTipoviKoze().add(TipKoze.NORMALNA);
+				proizvod.getTipoviKoze().add(TipKoze.MASNA);
+				proizvod.getTipoviKoze().add(TipKoze.SUVA);
 
 				proizvodService.save(proizvod);
 

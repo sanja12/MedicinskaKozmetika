@@ -5,6 +5,12 @@ medicinskaKozmetika.config(['$routeProvider', function($routeProvider) {
 			templateUrl : '/app/components/home/home.html',
 			controller: 'homeCtrl'
 		})
+		.when('/brend', {
+			templateUrl : '/app/components/brend.html'
+		})
+		.when('/kontakt', {
+			templateUrl : '/app/components/kontakt/kontakt.html'
+		})
 		.when('/apoteke', {
 			templateUrl : '/app/components/apoteke/apoteke.html'
 		})

@@ -1,6 +1,69 @@
+<meta charset="utf-8">
+<hr>
 <div ng-controller="linijeKozmetikeCtrl">
-	<h1>Spisak linija nase kozmetike:</h1>
-	<br> <br>
+	<div class="container">
+		<div class="gallery">
+			<div class="text-center">
+				<h2>Naše linije kozmetike</h2>
+				<p>Pronađite proizvod koji u potpunosti odgovara Vašoj koži</p>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="/assets/img/1.jpg" alt="" class="img-responsive" />
+					<figcaption>
+						<h4>Hydrabio</h4>
+						<p>Vaša koža je suva i dehidrirana?</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="/assets/img/2.jpg" alt="" class="img-responsive" />
+					<figcaption>
+						<h4>Sebium</h4>
+						<p>Akne i koža sklona nepravilnostima</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="/assets/img/3.jpg" alt="" class="img-responsive" />
+					<figcaption>
+						<h4>Sensibio</h4>
+						<p>Rozacea i crvenilo</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="/assets/img/4.jpg" alt="" class="img-responsive" />
+					<figcaption>
+						<h4>Cicabio</h4>
+						<p>Ekcemi i iritacije kože</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="/assets/img/5.jpg" alt="" class="img-responsive" />
+					<figcaption>
+						<h4>Photoderm</h4>
+						<p>Zaštita od sunca</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="/assets/img/6.jpg" alt="" class="img-responsive" />
+					<figcaption>
+						<h4>Atoderm</h4>
+						<p>Atopična koža, svrab i perutanje</p>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="col-md-4" ng-repeat="lk in linijeKozmetike">
 			<div class="card-group">
@@ -16,16 +79,13 @@
 					<p>
 					<h4 class="card-title">{{lk.naziv}}</h4>
 					<p class="card-text">{{lk.opis}}</p>
-					<button type="button" class="btn btn-primary btn-md" ng-click="goToProizvodi(lk.id)">Prikazi
-						proizvode</button>
-					</p>
-					<p>
+					<button type="button" class="btn btn-primary btn-md"
+						ng-click="goToProizvodi(lk.id)">Prikazi proizvode</button>
 					<p>
 						<button type="button" class="btn btn-info btn-xs"
 							ng-click="goToEdit(lk.id)">Izmjeni</button>
 						<button type="button" class="btn btn-info btn-xs"
 							ng-click="delete(lk.id)">Obrisi</button>
-					</p>
 					</p>
 				</div>
 			</div>
@@ -49,7 +109,8 @@
 					<label>Opis</label> <input class="form-control"
 						ng-model="linijaKozmetike.opis" />
 				</div>
-				<button class="btn btn-secondary" ng-click="doEdit(linijaKozmetike.id)">Izmijeni</button>
+				<button class="btn btn-secondary"
+					ng-click="doEdit(linijaKozmetike.id)">Izmijeni</button>
 			</form>
 		</div>
 	</div>

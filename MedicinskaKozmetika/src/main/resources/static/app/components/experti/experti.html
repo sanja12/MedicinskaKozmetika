@@ -1,32 +1,33 @@
+<meta charset="utf-8">
+<hr>
 <div ng-controller="expertiCtrl">
-	<h1>Nasi strucnjaci su uvijek na raspolaganju da Vam pomognu</h1>
-	<br /> <br /> <br />
-	<div class="row">
-		<div class="col-md-6" ng-repeat="e in experti">
-			<mdb-card class="testimonial-card">
-			<div class="card-up indigo lighten-1"></div>
-			<div class="avatar mx-auto">
-				<img
-					src="https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg"
-					class="rounded-circle">
+	<div class="container">
+
+		<h1>Nasi strucnjaci su uvijek na raspolaganju da Vam pomognu</h1>
+		<br /> <br /> <br />
+		<div class="row">
+			<div class="col-md-6" ng-repeat="e in experti">
+				<mdb-card class="testimonial-card">
+				<div class="card-up indigo lighten-1"></div>
+				<div class="avatar mx-auto">
+					<img
+						src="https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg"
+						class="rounded-circle">
+				</div>
+				<mdb-card-body> <mdb-card-title>
+				<h4>{{e.zvanje}} {{e.ime}} {{e.prezime}}</h4>
+				</mdb-card-title> <mdb-card-title>{{e.email}}</mdb-card-title>
+				<hr>
+				<p>
+					<i class="fa fa-quote-left"></i> {{e.opis}}
+				</p>
+				<div class="btn-group float-left">
+					<button ng-click="sendMessage(e.id)" class="btn btn-info">Posalji
+						poruku</button>
+				</div>
+				</mdb-card-body> </mdb-card>
+				<br />
 			</div>
-			<mdb-card-body> <mdb-card-title>
-			<h4>{{e.zvanje}} {{e.ime}} {{e.prezime}}</h4>
-			</mdb-card-title> <mdb-card-title>{{e.email}}</mdb-card-title>
-			<hr>
-			<p>
-				<i class="fa fa-quote-left"></i> {{e.opis}}
-			</p>
-			<div class="btn-group float-left">
-				<button ng-click="sendMessage(e.id)"
-					class="btn btn-info">Posalji poruku</button></div>
-			</mdb-card-body> </mdb-card>
-			<br/>
 		</div>
-
-
 	</div>
-	<!--Grid row-->
-
-
 </div>
