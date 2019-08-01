@@ -14,11 +14,14 @@
 <script src="/app/components/kontakt/kontakt.controller.js"></script>
 <script src="/app/components/apoteke/apoteke.controller.js"></script>
 <script src="/app/components/edit-apoteka/edit-apoteka.controller.js"></script>
-<script src="/app/components/edit-lanacApoteka/edit-lanacApoteka.controller.js"></script>
+<script
+	src="/app/components/edit-lanacApoteka/edit-lanacApoteka.controller.js"></script>
 <script src="/app/components/promocije/promocije.controller.js"></script>
 <script src="/app/components/experti/experti.controller.js"></script>
-<script src="/app/components/expert-send-message/expert-send-message.controller.js"></script>
-<script src="/app/components/linije-kozmetike/linije-kozmetike.controller.js"></script>
+<script
+	src="/app/components/expert-send-message/expert-send-message.controller.js"></script>
+<script
+	src="/app/components/linije-kozmetike/linije-kozmetike.controller.js"></script>
 <script src="/app/components/proizvodi/proizvodi.controller.js"></script>
 
 <title>Medicinska kozmetika</title>
@@ -27,7 +30,9 @@
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="/assets/css/animate.css">
 <link href="/assets/css/animate.min.css" rel="stylesheet">
-<link href="app/components/css/style.css" rel="stylesheet" />
+<link href="/app/components/css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/font-awesome.css">
+
 
 </head>
 
@@ -52,14 +57,23 @@
 					<div class="menu">
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation"><a href="index.html" class="active">Početna</a></li>
-							<li role="presentation"><a href="/#!/brend">Naš brend</a></li>
+							<li role="presentation"><a href="/#!/brend">Brend</a></li>
 							<li role="presentation"><a href="/#!/apoteke">Prodajna
 									mjesta</a></li>
 							<li role="presentation"><a href="/#!/promocije">Promocije</a></li>
 							<li role="presentation"><a href="/#!/experti">Pitajte
 									eksperta</a></li>
-							<li role="presentation"><a href="/#!/linije-kozmetike">Linije
-									kozmetike</a></li>
+							<li role="presentation" class="dropdown"><a
+								id="dropdownMenu1" class="dropdown-toggle"
+								data-toggle="dropdown"> Linije kozmetike <span class="caret"></span>
+							</a>
+								<ul class="dropdown-menu" role="menu"
+									aria-labelledby="dropdownMenu1">
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="#">Pregledaj naše linije</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="#">Dodaj novu liniju</a></li>
+								</ul>
 							<li role="presentation"><a href="/#!/proizvodi">Proizvodi</a></li>
 							<li role="presentation"><a href="/#!/kontakt">Kontakt</a></li>
 						</ul>
@@ -68,10 +82,15 @@
 			</div>
 		</nav>
 	</header>
-	
+
 	<div ng-app="medicinskaKozmetika">
 		<div ng-view></div>
 	</div>
+
+	<button onclick="topFunction()" id="myBtn" title="Vrh">
+		<i class="fa fa-chevron-up"></i>
+	</button>
+
 
 	<footer>
 		<div class="container">
@@ -82,7 +101,8 @@
 					budite slobodni da nas kontaktirajte:</p>
 				<div class="contact-info">
 					<ul>
-						<li><i class="fa fa-home fa"></i>Zmaj Jovina 12, Novi Sad, Srbija</li>
+						<li><i class="fa fa-home fa"></i>Zmaj Jovina 12, Novi Sad,
+							Srbija</li>
 						<li><i class="fa fa-phone fa"></i> +381 60 1299002</li>
 						<li><i class="fa fa-envelope fa"></i>
 							medicinskakozmetika@gmail.com</li>
@@ -95,18 +115,13 @@
 				<div class="text-center">
 					<h4>Naši eksperti</h4>
 					<ul class="sidebar-gallery">
-						<li><a href="#"><img src="/assets/img/111.jpg" height="42" width="82"
-								alt="" /></a></li>
-						<li><a href="#"><img src="/assets/img/112.jpg"
-								alt="" /></a></li>
-						<li><a href="#"><img src="/assets/img/113.jpg"
-								alt="" /></a></li>
-						<li><a href="#"><img src="/assets/img/114.jpg"
-								alt="" /></a></li>
-						<li><a href="#"><img src="/assets/img/115.jpg"
-								alt="" /></a></li>
-						<li><a href="#"><img src="/assets/img/116.jpg"
-								alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/111.jpg"
+								height="42" width="82" alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/112.jpg" alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/113.jpg" alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/114.jpg" alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/115.jpg" alt="" /></a></li>
+						<li><a href="#"><img src="/assets/img/116.jpg" alt="" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -115,8 +130,9 @@
 				data-wow-delay="900ms">
 				<div class="">
 					<h4>Pretplatite se na naš bilten</h4>
-					<p>Prijavite se danas kako biste dobijali najnovije vijesti
-						mejlom. Možete se odjaviti sa ovog servisa bilo kada</p>
+					<p>Prijavite se kako biste dobijali najnovije vijesti na Vašu
+						email adresu. Možete se odjaviti sa ovog servisa u bilo kom
+						trenutku</p>
 					<div class="btn-gamp">
 						<input type="email" class="form-control" id="exampleInputEmail3"
 							placeholder="Unesite email">
@@ -162,6 +178,7 @@
 
 	<script src="/assets/js/jquery.min.js"></script>
 	<script src="/assets/js/jquery-migrate.min.js"></script>
+	<script src="/assets/js/bootstrap.js"></script>
 	<script src="/assets/js/bootstrap.min.js"></script>
 	<script src="/assets/js/wow.min.js"></script>
 	<script>

@@ -24,7 +24,7 @@ public class JpaProizvodServiceImpl implements ProizvodService {
 	@Override
 	public Page<Proizvod> findAll(int pageNum) {
 
-		return proizvodRepository.findAll(PageRequest.of(pageNum, 5));
+		return proizvodRepository.findAll(PageRequest.of(pageNum, 8));
 	}
 
 	@Override

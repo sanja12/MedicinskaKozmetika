@@ -1,99 +1,109 @@
 <meta charset="utf-8">
+<hr>
 <div ng-controller="apotekeCtrl">
-	<div class="about">
-		<div class="container">
-			<h2>Spisak apoteka u kojima možete pronaći našu kozmetiku</h2>
+	<div class="container">
+		<div id="about" class="home-section color-dark bg-white">
+			<div class="container marginbot-50">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
+						<div class="section-heading text-center">
+							<h2 class="h-bold">Spisak apoteka u kojima možete pronaći
+								našu kozmetiku</h2>
+							<div class="divider-header"></div>
+							<p>Pronađite naša prodajna mjesta</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 wow fadeInRight" data-wow-offset="0"
+				data-wow-delay="0.3s">
+				<div class="counter">
+					<p class="timer count-title count-number" data-to="10"
+						data-speed="1500"></p>
+					<p class="count-text ">
+						<br />U preko 10 zemalja
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3 wow fadeInRight" data-wow-offset="0"
+				data-wow-delay="0.3s">
+				<div class="counter">
+					<p class="timer count-title count-number" data-to="37"
+						data-speed="1500"></p>
+					<p class="count-text ">
+						<br />Lanca apoteka
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3 wow fadeInRight" data-wow-offset="0"
+				data-wow-delay="0.3s">
+				<div class="counter">
+					<p class="timer count-title count-number" data-to="140"
+						data-speed="1500"></p>
+					<p class="count-text ">
+						<br />Apoteka
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3 wow fadeInRight" data-wow-offset="0"
+				data-wow-delay="0.3s">
+				<div class="counter">
+					<p class="timer count-title count-number" data-to="100"
+						data-speed="1500"></p>
+					<p class="count-text ">
+						<br />Proizvoda
+					</p>
+				</div>
+			</div>
 			<br /> <br />
-			<h4>Potražite najbližu apoteku:</h4>
-
-			<div class="col-12 col-lg-8">
-				<form>
-					<div class="md-form mb-3 mt-0">
-						<h5>Naziv apoteke:</h5>
-						<input class="form-control" type="text" placeholder="Sunce"
-							ng-model="searchParams.naziv" aria-label="Naziv apoteke">
-					</div>
-					<div class="md-form mb-3 mt-0">
-						<h5>Grad:</h5>
-						<input class="form-control" type="text" placeholder="Novi Sad"
-							ng-model="searchParams.grad" aria-label="Grad">
-					</div>
-					<div class="md-form active-pink active-pink-2 mb-3 mt-0">
-						<h5>Lanac apoteka:</h5>
-						<select class="form-control" ng-model="searchParams.lanac">
-							<option ng-repeat="la in lanciApoteka" value={{la.id}}>{{la.naziv}}</option>
-						</select>
-					</div>
-					<div class="text-center">
-						<button ng-click="doSearch()" class="btn btn-primary">Pretražite</button>
-					</div>
-				</form>
-				<br /> <br /> <br />
-			</div>
 		</div>
-		<div class="container">
-
-			<h4>Lanci apoteka u kojima možete pronaći naše preparate:</h4>
-			<div class="col-12 col-lg-8">
-				<p>
-				<div class="btn-group float-right">
-					<button ng-disabled="pageNum == 0" ng-click="changePage(-1)"
-						class="btn">Prethodna</button>
-					<button ng-disabled="pageNum == totalPages - 1"
-						ng-click="changePage(1)" class="btn">Sljedeća</button>
-				</div>
-				</p>
-			</div>
-			<div class="col-12 col-lg-8">
-				<div class="text-muted">
-					<div class="text-center">
-						<table class="table table-bordered table-striped">
-							<thead class="thead-dark">
-								<tr>
-									<th>Naziv lanca</th>
-									<th>Kontakt osoba</th>
-									<th>Email</th>
-									<th>Telefon</th>
-									<th colspan="4" ng-show="false"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="la in lanciApoteka">
-									<td>{{la.naziv}}</td>
-									<td>{{la.kontaktOsoba}}</td>
-									<td>{{la.email}}</td>
-									<td>{{la.telefon}}</td>
-									<td><button class="btn btn-primary"
-											ng-click="listApoteke(la.id)">Apoteke ovog lanca</button></td>
-									<td><button class="btn btn-warning"
-											ng-click="goToEditLanacApoteka(la.id)">
-											<i class="fa fa-pencil" aria-hidden="true"></i>
-										</button></td>
-									<td><button class="btn btn-danger"
-											ng-click="deleteLanacApoteka(la.id)">
-											<i class="fa fa-trash-o" aria-hidden="true"></i>
-										</button></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div>
-					<button class="btn btn-success" ng-click="addLanacApoteka()">
-						Dodaj novi Lanac apoteka</i>
-					</button>
+	</div>
+	<div id="about" class="container">
+		<div class="text-center">
+			<div class="col-6 col-lg-6"
+				style="float: left; position: relative; left: 25%;">
+				<div class="row">
+					<h2>Potražite najbližu apoteku:</h2>
+					<br />
+					<form>
+						<div class="md-form form-sm">
+							<h5>Naziv apoteke:</h5>
+							<input class="form-control" type="text" placeholder="Sunce"
+								ng-model="searchParams.naziv" aria-label="Naziv apoteke">
+						</div>
+						<div class="md-form mb-3 mt-0">
+							<h5>Grad:</h5>
+							<input class="form-control" type="text" placeholder="Novi Sad"
+								ng-model="searchParams.grad" aria-label="Grad">
+						</div>
+						<div class="md-form mb-3 mt-0">
+							<h5>Lanac apoteka:</h5>
+							<select class="form-control" ng-model="searchParams.lanac">
+								<option ng-repeat="la in lanciApoteka" value={{la.id}}>{{la.naziv}}</option>
+							</select>
+						</div>
+						<div class="text-center">
+							<button ng-click="doSearch()" class="btn btn-primary">Pretražite</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-		<br /> <br /> <br />
+	</div>
 
-		<div class="container">
-
-			<h4>Apoteke partneri:</h4>
-
-			<div class="col-12 col-lg-8">
-				<div class="text-muted">
-					<div class="text-center">
+	<div id="about" class="container">
+		<div class="text-center">
+			<div class="col-6"
+				style="float: left; position: relative; left: 22%;">
+				<div class="row">
+					<h2>Apoteke partneri:</h2>
+					<br/>
+					<div class="text-muted">
 						<table class="table">
 							<thead>
 								<tr>
@@ -115,11 +125,12 @@
 									<td>{{a.email}}</td>
 									<td ng-if="a.lanacApotekaId != null">{{a.lanacApotekaNaziv}}</td>
 									<td ng-if="a.lanacApotekaId == null">/</td>
-									<td><button class="btn btn-warning"
+									<td><button class="btn btn-success"
 											ng-click="goToEdit(a.id)">
 											<i class="fa fa-pencil" aria-hidden="true"></i>
 										</button></td>
-									<td><button class="btn btn-danger" ng-click="delete(a.id)">
+									<td><button class="btn btn-success"
+											ng-click="delete(a.id)">
 											<i class="fa fa-trash-o" aria-hidden="true">
 										</button></td>
 								</tr>
@@ -134,6 +145,65 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="about" class="container">
+		<div class="text-center">
+			<div class="col-6"
+				style="float: left; position: relative; left: 17%;">
+				<div class="row">
+					<h2>Lanci apoteka u kojima možete pronaći naše preparate:</h2>
+					<br/>
+				</div>
+				<div class="text-muted">
+					<div class="text-center">
+						<table class="table table-bordered table-striped">
+							<thead class="thead-dark">
+								<tr>
+									<th>Naziv lanca</th>
+									<th>Kontakt osoba</th>
+									<th>Email</th>
+									<th>Telefon</th>
+									<th colspan="4" ng-show="false"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="la in lanciApoteka">
+									<td>{{la.naziv}}</td>
+									<td>{{la.kontaktOsoba}}</td>
+									<td>{{la.email}}</td>
+									<td>{{la.telefon}}</td>
+									<td><button class="btn btn-primary"
+											ng-click="listApoteke(la.id)">Apoteke ovog lanca</button></td>
+									<td><button class="btn btn-success"
+											ng-click="goToEditLanacApoteka(la.id)">
+											<i class="fa fa-pencil" aria-hidden="true"></i>
+										</button></td>
+									<td><button class="btn btn-success"
+											ng-click="deleteLanacApoteka(la.id)">
+											<i class="fa fa-trash-o" aria-hidden="true"></i>
+										</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div>
+					<p>
+					<div class="btn-group">
+						<button ng-disabled="pageNum == 0" ng-click="changePage(-1)"
+							class="btn">Prethodna</button>
+						<button ng-disabled="pageNum == totalPages - 1"
+							ng-click="changePage(1)" class="btn">Sljedeća</button>
+					</div>
+					</p>
+				</div>
+				<div>
+					<button class="btn btn-success" ng-click="addLanacApoteka()">
+						Dodaj novi Lanac apoteka</button>
 				</div>
 			</div>
 		</div>

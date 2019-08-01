@@ -3,30 +3,31 @@
 <div ng-controller="expertiCtrl">
 	<div class="container">
 
-		<h1>Nasi strucnjaci su uvijek na raspolaganju da Vam pomognu</h1>
-		<br /> <br /> <br />
-		<div class="row">
-			<div class="col-md-6" ng-repeat="e in experti">
-				<mdb-card class="testimonial-card">
-				<div class="card-up indigo lighten-1"></div>
-				<div class="avatar mx-auto">
-					<img
-						src="https://images.cdn2.stockunlimited.net/clipart/female-user-icon_1602624.jpg"
-						class="rounded-circle">
+		<div id="our-team">
+			<div class="container">
+				<div class="text-center">
+					<h2>Naši stručnjaci su uvijek na raspolaganju da Vam pomognu</h2>
+					<p>Ovdje ide neki tekst o ekspertima</p>
 				</div>
-				<mdb-card-body> <mdb-card-title>
-				<h4>{{e.zvanje}} {{e.ime}} {{e.prezime}}</h4>
-				</mdb-card-title> <mdb-card-title>{{e.email}}</mdb-card-title>
-				<hr>
-				<p>
-					<i class="fa fa-quote-left"></i> {{e.opis}}
-				</p>
-				<div class="btn-group float-left">
-					<button ng-click="sendMessage(e.id)" class="btn btn-info">Posalji
-						poruku</button>
+				<div class="text-center">
+
+					<div class="row">
+
+						<div class="col-md-4 wow bounceInDown" data-wow-offset="0"
+							data-wow-delay="0.3s" ng-repeat="e in experti">
+							<img src="/assets/img/expert.jpg" alt="">
+							<h2>{{e.zvanje}} {{e.ime}} {{e.prezime}}</h2>
+							<h4>{{e.email}}</h4>
+							<p>
+								<i class="fa fa-quote-left"></i> {{e.opis}}
+							</p>
+							<div class="btn-group float-left">
+								<button ng-click="sendMessage(e.id)" class="btn btn-info">Pošalji
+									poruku</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				</mdb-card-body> </mdb-card>
-				<br />
 			</div>
 		</div>
 	</div>

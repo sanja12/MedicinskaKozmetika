@@ -1,5 +1,5 @@
-jQuery(document).ready(function($) {
-  "use strict";
+var medicinskaKozmetika = angular.module("medicinskaKozmetika");
+medicinskaKozmetika.controller("kontaktCtrl", function($scope, $http, $location) {
 
   //Contact
   $('form.contactForm').submit(function() {
@@ -114,5 +114,4 @@ jQuery(document).ready(function($) {
     });
     return false;
   });
-
 });

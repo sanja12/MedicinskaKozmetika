@@ -30,7 +30,7 @@ medicinskaKozmetika.controller("proizvodiCtrl", function($scope, $http, $routePa
 	            config.params.id = $scope.searchParams.id;
 	        }
 	        	        
-	        $http.get("/api/linije-kozmetike/" + $routeParams.id + "/proizvodi", config)
+	        $http.get("/api/proizvodi", config)
             .then(function success(data){
                 $scope.proizvodi = data.data;
   
@@ -40,6 +40,18 @@ medicinskaKozmetika.controller("proizvodiCtrl", function($scope, $http, $routePa
 	    };
 	    
 	getProizvodi();
+	
+	$scope.proizvod2 = {};
+	
+	$scope.getProizvod = function(id) {
+
+		$http.get("/api/proizvodi/" + id).then(function success(res) {
+			$scope.proizvod2 = res.data;			
+			
+		}, function error() {
+			alert("Could not get a Proizvod!");
+		});
+	}
 	
 	   
 	$scope.goToEdit = function(id) {

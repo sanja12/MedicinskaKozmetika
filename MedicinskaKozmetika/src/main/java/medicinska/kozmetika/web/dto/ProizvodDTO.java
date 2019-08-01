@@ -97,5 +97,4 @@ public class ProizvodDTO {
 	public void setMjestaPrimjene(List<MjestoPrimjene> mjestaPrimjene) {
 		this.mjestaPrimjene = mjestaPrimjene;
 	}
-
 }

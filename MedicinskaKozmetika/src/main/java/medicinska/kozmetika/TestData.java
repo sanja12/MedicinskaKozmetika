@@ -17,6 +17,7 @@ import medicinska.kozmetika.model.ProblemKoze;
 import medicinska.kozmetika.model.Proizvod;
 import medicinska.kozmetika.model.Promocija;
 import medicinska.kozmetika.model.TipKoze;
+import medicinska.kozmetika.model.TipProizvoda;
 import medicinska.kozmetika.model.TipPromocije;
 import medicinska.kozmetika.service.ApotekaService;
 import medicinska.kozmetika.service.ExpertService;
@@ -129,6 +130,7 @@ public class TestData {
 				proizvod.getMjestaPrimjene().add(MjestoPrimjene.TIJELO);
 				proizvod.setNaziv("Proizvod0" + j);
 				proizvod.setOpis("Opis proizvoda");
+				proizvod.setTipProizvoda(TipProizvoda.SAMPON);
 				proizvod.getProblemiKoze().add(ProblemKoze.ATOPIJA);
 				proizvod.getProblemiKoze().add(ProblemKoze.ROZACEA);
 				proizvod.getTipoviKoze().add(TipKoze.NORMALNA);
