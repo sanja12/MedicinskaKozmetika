@@ -1,2 +1,2 @@
 # MedicinskaKozmetika
-Aplikacija za prezentovanje medicinska kozmetike određenog brenda
+Aplikacija za prezentovanje medicinske kozmetike određenog brenda
